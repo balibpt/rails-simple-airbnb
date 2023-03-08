@@ -1,0 +1,14 @@
+<h1>
+  All our Flats (<%= @flats.size %>)
+</h1>
+<%= link_to "Add a Flat", new_flat_path %>
+<% @flats.each do |flat| %>
+  <div>
+    <h3><%= link_to flat.name, flat_path(flat) %> </h3>
+    <p> <%= flat.address %> </p>
+    <p> <%= flat.number_of_guests %> Pax </p>
+    <p> $<%= flat.price_per_night %> </p>
+    <%= link_to "Edit", edit_flat_path(flat) %>
+    <%= link_to "Delete",flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+  </div>
+<% end %>
